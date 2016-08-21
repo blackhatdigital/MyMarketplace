@@ -1,9 +1,14 @@
 Rails.application.routes.draw do
+  
   devise_for :users
-  resources :packages
+  resources :packages do 
+    resources :orders
+  end
 
   get 'static/home'
   get 'advocate' => "packages#advocate"
+  get 'sales' => "orders#sales"
+  get 'purchases' => "orders#purchases"
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

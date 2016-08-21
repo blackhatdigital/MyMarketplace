@@ -1,0 +1,23 @@
+<h1>Your Purchase History</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Price</th>
+      <th>Advocate</th>
+      <th>Date Sold</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td><%= order.package.name %></td>
+        <td><%= number_to_currency(order.package.price) %></td>
+        <td><%= order.package.user.email %></td>
+        <td><%= order.created_at.strftime("%B %-d, %Y") %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
