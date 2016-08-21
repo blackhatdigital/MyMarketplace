@@ -1,0 +1,43 @@
+<h1> This Package Belongs to user with email of <%= @package.user.email %></h1>
+<p>
+  <strong>Name:</strong>
+  <%= @package.name %>
+</p>
+
+<p>
+  <strong>Description:</strong>
+  <%= @package.description %>
+</p>
+
+<p>
+  <strong>Price:</strong>
+  <%= @package.price %>
+</p>
+
+<p>
+  <strong>Sample required:</strong>
+  <%= @package.sample_required %>
+</p>
+
+<p>
+  <strong>Timeframe days:</strong>
+  <%= @package.timeframe_days %>
+</p>
+
+<p>
+  <strong>Audience size:</strong>
+  <%= @package.audience_size %>
+</p>
+
+<p>
+  <strong>Target:</strong>
+  <%= @package.target_id %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @package.user_id %>
+</p>
+
+<%= link_to 'Edit', edit_package_path(@package) %> |
+<%= link_to 'Back', packages_path %>
