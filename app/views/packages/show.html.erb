@@ -39,7 +39,7 @@
   <%= @package.user_id %>
 </p>
 
-<%= link_to "BUY NOW", new_package_order_path(@package), class: "btn btn-primary" %>
+<%= link_to "BUY NOW", new_package_order_path(@package), class: "btn btn-primary", data: { no_turbolink: true } %>
 
 <%= link_to 'Edit', edit_package_path(@package) %> |
 <%= link_to 'Back', packages_path %>

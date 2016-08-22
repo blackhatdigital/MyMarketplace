@@ -1,4 +1,4 @@
-<%= form_for([@package, @order]) do |f| %>
+<%= form_for([@package, @order], :html => {:id => "new_order"}) do |f| %>
   <% if @order.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@order.errors.count, "error") %> prohibited this order from being saved:</h2>
@@ -12,7 +12,43 @@
     </div>
   <% end %>
 
+  <div id="stripe_error" class="alert alert-danger" style="display: none;">
+    <noscript>Javascript is not enabled and is required for this form. Please first enable it in your browser settings.</noscript>
+  </div>
+
+  <span class="payment-errors"></span>
+
+  <div class="form-row">
+    <label>
+      <span>Card Number</span>
+      <input type="text" size="20" data-stripe="number">
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Expiration (MM/YY)</span>
+      <input type="text" size="2" data-stripe="exp_month">
+    </label>
+    <span> / </span>
+    <input type="text" size="2" data-stripe="exp_year">
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>CVC</span>
+      <input type="text" size="4" data-stripe="cvc">
+    </label>
+  </div>
+
+  <div class="form-row">
+    <label>
+      <span>Billing Zip</span>
+      <input type="text" size="6" data-stripe="address_zip">
+    </label>
+  </div>
+
   <div class="actions">
-    <%= f.submit value: "PAY NOW" %>
+    <%= f.submit value: "PAY NOW", id: "new_order", class: "new_order" %>
   </div>
 <% end %>
