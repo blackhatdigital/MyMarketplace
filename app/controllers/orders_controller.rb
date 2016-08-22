@@ -57,7 +57,7 @@ class OrdersController < ApplicationController
 
     respond_to do |format|
       if @order.save
-        format.html { redirect_to @package }
+        format.html { redirect_to @package   }
         format.json { render :show, status: :created, location: @order }
       else
         format.html { render :new }
