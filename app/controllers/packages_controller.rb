@@ -34,10 +34,9 @@ class PackagesController < ApplicationController
     Stripe.api_key = ENV["stripe_api_key"]
     token = params[:stripeToken]
 
-    recipient = Stripe::Recipient.create(
-        :name => current_user.email,
-        :type => "individual",
-        :bank_account => token
+    recipient = Stripe::Account.create(
+    :country => "US",
+    :managed => true
         )
 
       current_user.recipient = recipient.id
