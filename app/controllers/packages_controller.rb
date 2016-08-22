@@ -31,6 +31,18 @@ class PackagesController < ApplicationController
     @package = Package.new(package_params)
     @package.user_id = current_user.id
 
+    Stripe.api_key = ENV["stripe_api_key"]
+    token = params[:stripeToken]
+
+    recipient = Stripe::Recipient.create(
+        :name => current_user.email,
+        :type => "individual",
+        :bank_account => token
+        )
+
+      current_user.recipient = recipient.id
+      current_user.save
+
     respond_to do |format|
       if @package.save
         format.html { redirect_to @package, notice: 'Package was successfully created.' }

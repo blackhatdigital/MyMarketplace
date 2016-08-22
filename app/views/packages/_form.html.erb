@@ -1,4 +1,4 @@
-<%= form_for(@package) do |f| %>
+<%= form_for(@package, :html => {:id => "new_package"}) do |f| %>
   <% if @package.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@package.errors.count, "error") %> prohibited this package from being saved:</h2>
@@ -10,6 +10,10 @@
       </ul>
     </div>
   <% end %>
+
+    <div id="stripe_error" class="alert alert-danger" style="display: none;">
+    <noscript>Javascript is not enabled and is required for this form. Please first enable it in your browser settings.</noscript>
+  </div>
 
   <div class="field">
     <%= f.label :name %><br>
@@ -39,6 +43,25 @@
     <%= f.label :target_id %><br>
     <%= f.number_field :target_id %>
   </div>
+
+
+    <br>
+    <h1>Bank Account Information</h1>
+
+    <div class="form-group">
+      <%= label_tag :country %>
+      <%= text_field_tag :country, nil, { :name => nil, :'data-stripe' => "country", class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :routing_number %> Or BSB
+      <%= text_field_tag :routing_number, nil, { :name => nil, :'data-stripe' => "routingNumber", class: "form-control" } %>
+    </div>
+    <div class="form-group">
+      <%= label_tag :account_number %>
+      <%= text_field_tag :account_number, nil, { :name => nil, :'data-stripe' => "accountNumber", class: "form-control" } %>
+    </div>
+ 
+
   <div class="actions">
     <%= f.submit %>
   </div>
