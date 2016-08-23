@@ -1,3 +1,5 @@
+class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+
   def stripe_connect
     @user = current_user
     if @user.update_attributes({
@@ -14,3 +16,4 @@
       redirect_to new_user_registration_url
     end
   end
+end

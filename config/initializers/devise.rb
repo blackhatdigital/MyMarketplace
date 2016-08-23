@@ -276,5 +276,5 @@ Devise.setup do |config|
       ENV['stripe_client_id'],
       ENV['stripe_api_key'],
       :scope => 'read_write',
-      :stripe_landing => 'register'
+      :stripe_landing => 'login'
 end
