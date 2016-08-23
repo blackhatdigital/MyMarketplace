@@ -12,6 +12,7 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'devise'
 gem 'figaro'
 gem 'stripe'
+gem 'omniauth-stripe-connect'
 
 group :development, :test do
   gem 'byebug'
