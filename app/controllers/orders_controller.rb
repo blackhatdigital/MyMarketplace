@@ -49,7 +49,8 @@ class OrdersController < ApplicationController
       charge = Stripe::Charge.create(
         :amount => (@package.price * 100).floor,
         :currency => "aud",
-        :source => token
+        :source => token,
+        :description => "Social Advocate Purchase"
         )
 
     rescue Stripe::CardError => e
