@@ -5,6 +5,7 @@ devise_for :users, :controllers => { :omniauth_callbacks => "omniauth_callbacks"
     resources :orders
   end
 
+
   get 'static/home'
   get 'advocate' => "packages#advocate"
   get 'sales' => "orders#sales"
