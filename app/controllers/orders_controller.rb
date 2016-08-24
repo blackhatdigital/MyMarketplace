@@ -46,12 +46,10 @@ class OrdersController < ApplicationController
     token = params[:stripeToken]
 
     begin
-      customer = Stripe::Customer.create(source: params[:stripeToken])
-
       charge = Stripe::Charge.create(
         :amount => (@package.price * 100).floor,
         :currency => "aud",
-        :customer => token
+        :source => token
         )
 
     rescue Stripe::CardError => e
