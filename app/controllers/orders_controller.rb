@@ -49,6 +49,7 @@ class OrdersController < ApplicationController
       charge = Stripe::Charge.create(
         :amount => (@package.price * 100).floor,
         :currency => "aud",
+        :customer => current_user.id,
         :card => token
         )
 
