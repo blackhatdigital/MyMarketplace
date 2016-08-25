@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
     @order.package_id = @package.id
     @order.buyer_id = current_user.id
     @order.seller_id = @advocate.id
-
+    require "stripe"
     Stripe.api_key = ENV["stripe_api_key"]
     token = params[:stripeToken]
 
