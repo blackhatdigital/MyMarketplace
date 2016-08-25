@@ -41,7 +41,7 @@ class OrdersController < ApplicationController
     @order.package_id = @package.id
     @order.buyer_id = current_user.id
     @order.seller_id = @advocate.id
-    
+
     Stripe.api_key = ENV["stripe_api_key"]
     token = params[:stripeToken]
 
@@ -50,8 +50,8 @@ class OrdersController < ApplicationController
           :amount => (@package.price * 80).floor,
           :currency => "aud",
           :source => token,
-          :description => "Social Advocate Purchase",
           :application_fee => (@package.price * 20).floor,
+          :description => "Social Advocate Purchase",
           :destination => @advocate.uid
         )
 
