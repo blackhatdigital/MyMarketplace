@@ -49,19 +49,15 @@ class OrdersController < ApplicationController
         :amount => (@package.price * 100).floor,
         :currency => "aud",
         :source => token,
+        :application_fee => (@package.price * 80).floor,
+        :destination => @advocate.uid,
         :description => "Social Advocate Purchase"
         )
 
-      transfer = Stripe::Transfer.create(
-      :amount => (@package.price * 80).floor,
-      :currency => "aud",
-      :destination => @advocate.uid
-      )
     rescue Stripe::CardError => e
       flash[:danger] = e.message
     end
 
-    
 
     respond_to do |format|
       if @order.save
