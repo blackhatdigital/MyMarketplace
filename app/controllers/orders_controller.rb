@@ -41,19 +41,21 @@ class OrdersController < ApplicationController
     @order.package_id = @package.id
     @order.buyer_id = current_user.id
     @order.seller_id = @advocate.id
-    
+
     Stripe.api_key = ENV["stripe_api_key"]
     token = params[:stripeToken]
 
     begin
-      charge = Stripe::Charge.create(
-        :amount => (@package.price * 100).floor,
-        :currency => "aud",
-        :source => token,
-        :application_fee => (@package.price * 80).floor,
-        :destination => @advocate.uid,
-        :description => "Social Advocate Purchase"
-        )
+ 
+      charge = Stripe::Charge.create({
+          :amount => (@package.price * 100).floor,
+          :currency => "aud",
+          :source => token,
+          :description => "Social Advocate Purchase",
+          :application_fee => (@package.price * 80).floor
+        },
+        {:stripe_account => @advocate.uid}
+      )
 
     rescue Stripe::CardError => e
       flash[:danger] = e.message
