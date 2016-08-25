@@ -7,6 +7,8 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <%= tag :meta, :name => "stripe-key", :content => ENV["stripe_publishable_key"] %>
+  <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700,800" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css?family=Architects+Daughter" rel="stylesheet">
 </head>
 <body>
 <%= render 'layouts/nav' %>
