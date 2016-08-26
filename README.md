@@ -18,8 +18,7 @@
 <b>run</b> bundle install<br />
 <b>run</b> rake:dbmigrate<br />
 
-<b>Install figaro</b><br />
-bundle exec figaro install
+<b>Install figaro</b> bundle exec figaro install<br /><br />
 
 <b>Open config/application.yml and fill in your stripe credentials:</b><br />
 stripe_api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br />
