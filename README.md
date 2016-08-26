@@ -14,26 +14,30 @@
 
 <h2>To install:</h2><br />
 
-<b>clone the repo< -</b> git clone git@github.com:blackhatdigital/MyMarketplace.git
-<b>run -</b> bundle install
-<b>run -</b> rake:dbmigrate
+<b>clone the repo</b> git clone git@github.com:blackhatdigital/MyMarketplace.git<br />
+<b>run</b> bundle install<br />
+<b>run</b> rake:dbmigrate<br />
 
-<b>Install figaro</b>
+<b>Install figaro</b><br />
 bundle exec figaro install
 
-<b>Open config/application.yml and fill in your stripe credentials:</b>
+<b>Open config/application.yml and fill in your stripe credentials:</b><br />
 stripe_api_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br />
 stripe_publishable_key: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx<br />
 stripe_client_id: xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx <br /><br />
 
-<i>(Note: You will find the client_id for your stripe account under account settings -> connect)</i>
+<i>(Note: You will find the client_id for your stripe account under account settings -> connect)</i><br /><br />
 
 <b>Open stripe dashboard, under account settings open connect and change your callback url to:<br /></b>
 https://yoururl.herokuapp.com/users/auth/stripe_connect/callback
 
 <h2>Customise:</h2><br />
 You can customise the fees involved by locating the orders_controller#create<br />
-<a href="https://stripe.com/docs/connect/payments-fees">Refer to stripe documentation for help:</a>
+<a href="https://stripe.com/docs/connect/payments-fees">Refer to stripe documentation for help</a><br /><br />
+
+You can customise the packages model by running migrations.<br />
+You can customise the user model by running migrations but be sure not to remove any of the stripe columns.<br /><br />
+
 
 <h2>Things still needed</h2>
 <ul>
@@ -46,5 +50,5 @@ You can customise the fees involved by locating the orders_controller#create<br 
 	<li>Receipts</li>
 </ul>
 
-<h2>All welcome, fork, contribute whatever you need. Let's see more marketplaces out there.</h2>
+<h2>All welcome, fork, contribute whatever you need. <br />Let's see more marketplaces out there.</h2>
 
